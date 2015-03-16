@@ -1,17 +1,26 @@
 .badge{
 	   display: inline-block;
-  	// font-weight: @badge-font-weight;
-  	// color: @badge-color;
-  	// line-height: @badge-line-height;
-  	// vertical-align: baseline;
-  	// white-space: nowrap;
-  	// text-align: center;
-  	// background-color: @badge-bg;
-  	// &:empty{
-  	// 	display: none;
-  	// }
-  	// .btn &{
-  	// 	position: relative;
-  	// 	top: -1px;
-  	// }
+     min-width: 10px;
+     padding:3px 7px;
+  	font-weight: @badge-font-weight;
+  	color: @badge-color;
+  	line-height: @badge-line-height;
+  	vertical-align: baseline;
+  	white-space: nowrap;
+  	text-align: center;
+  	background-color: @badge-bg;
+  	&:empty{
+  		display: none;
+  	}
+  	.btn &{
+  		position: relative;
+  	}
+    a&{
+      &:hover,
+      &:focus{
+        color: @badge-link-hover-color;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
 }
