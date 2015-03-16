@@ -1,4 +1,4 @@
-define(['jquery','underscore','mock'],function ($,_,Mock) {
+define(['jquery','underscore','backbone','mock'],function ($,_,Backbone,Mock) {
 	var tpl ={
 		"list|1-10":[{
 			"name":Random.name(),
