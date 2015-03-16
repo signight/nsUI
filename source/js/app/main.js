@@ -6,7 +6,7 @@ require.config({
 		"backbone":"backbone-min",
 		"Backbone.LocalSorage":"backbone.localStorage-min",
 		"mock":'mock-min',
-		"app":"../app/app"
+		"router":"../app/router"
 		
 	},
 	shim: {
@@ -19,6 +19,6 @@ require.config({
 		}
 	}
 });
-require(["app"],function () {
-	
+require(["router"],function () {
+
 })

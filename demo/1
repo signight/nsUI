@@ -1,0 +1,7 @@
+<script type="text/template" id="list-temp">
+		<tr>
+			<td><%=name %></td>
+			<td><%=age %></td>
+			<td><%=email %></td>
+		</tr>
+	</script>
