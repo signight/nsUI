@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-size: 12px
+    }
+    .inputbtn {
+        border: solid 1px #ccc;
+        background-color: #eee;
+        line-height: 18px;
+        font-size: 12px
+    }
+    .inputtxt {
+        border: solid 1px #ccc;
+        line-height: 18px;
+        font-size: 12px;
+        padding-left: 3px
+    }
+    ul {
+        list-style: none;
+        padding: 0px;
+        margin: 10px 0px 15px 0px;
+        text-align: center
+    }
+    .input {
+        clear: both;
+        padding-top: 10px;
+        padding-left: 3px;
+        width: 457px
+    }
+    .spanl {
+        float: left
+    }
+    .spanr {
+        float: right
+    }
+    .btn {
+        padding-top: 10px;
+        clear: both
+    }
+    #pStatus {
+        display: none;
+        border: 1px #ccc solid;
+        width: 158px;
+        background-color: #eee;
+        padding: 6px 12px 6px 12px;
+        margin-left: 2px
+    }
+    #stuManager {
+        width: 460px;
+    }
+    #ulMessage {
+        width: 460px
+    }
+    #ulMessage span {
+        width: 90px;
+        float: left;
+        text-align: left
+    }
+    .show .edit,
+    .editing .disp {
+        display: none;
+    }
+    .show .disp,
+    .editing .edit {
+        display: block;
+    }
+    .li_h {
+        border-bottom: solid 1px #666;
+        float: left;
+        background-color: #eee;
+        padding: 5px;
+        font-weight: bold
+    }
+    .li_c {
+        border-bottom: dashed 1px #ccc;
+        float: left;
+        padding: 5px
+    }
+    </style>
+</head>
+<body>
+	<div id="stuManager">
+		<a href="">搜索</a>
+		<ul id="ulMessage">
+			<li class="li_h">
+				<span>学号</span>
+				<span>姓名</span>
+				<span>性别</span>
+				<span>总分</span>
+				<span>操作</span>
+			</li>
+		</ul>
+	</div>
+	<div class="input">
+            <span class="spanl">学号：<input type="text" readonly="readonly" name="StuID" id="StuID" class="inputtxt"
+                size="10" /><br />
+                姓名：<input type="text" name="Name" id="Name" class="inputtxt" size="15" />
+            </span><span class="spanr">性别：<select name="Sex" id="Sex">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select><br />
+                总分：<input type="text" name="Score" id="Score" class="inputtxt" size="8" />
+            </span>
+            <p class="btn">
+                <input id="btnAdd" type="button" value="增加" class="inputbtn" />
+            </p>
+            <p id="pStatus"></p>
+        </div>
+	<script src="source/js/lib/jquery.min.js"></script>
+	<script src="source/js/lib/mock-min.js"></script>
+	<script src="source/js/lib/underscore.js"></script>
+	<script src="source/js/lib/backbone-min.js"></script>
+	<script src="source/js/lib/backbone.localStorage-min.js"></script>
+	<script type="text/template" id="item-template">
+		<span><%= StuID%></span>
+		<span class="show">
+			<div class="disp"><%= Name%></div>
+			<div class="edit">
+				<input type="text" name="Name" id="Name" class="inputtext" size="8">
+			</div>
+		</span>
+		<span class="show">
+			<div class="disp"><%= Sex%></div>
+			<div class="edit">
+				<select name="Sex" id="Sex">
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</div>
+		</span>
+		<span>
+			<div class="disp"><%= Score %></div>
+            <div class="edit">
+                <input type="text" name="Score" id="Score" class="inputtxt" size="8" />
+            </div>
+		</span>
+		<span><a href="#">删除</a></span>
+	</script>
+	<script>
+	$(function () {
+		var Student=Backbone.Model.extend({
+			validate:function (attrData) {
+				for(var obj in attrData){
+					if (attrData[obj]=="") {
+						return obj +"不能为空";
+					};
+					if (obj=="Score" && isNaN(attrData.Score)) {
+						return "分数必须是数字";
+					};
+				}
+			}
+		})
+
+		var StudentList=Backbone.Collection.extend({
+			model:Student,
+			localStorage:new Backbone.LocalStorage("local-stu")
+		})
+
+		var Students= new StudentList;
+
+		var StudentView = Backbone.View.extend({
+			tagName:"li",
+			className:"li_c",
+			tpl:_.template($("#item-template").html()),
+			events:{
+				"dblclick span":"edit",
+				"blur input,select":"close",
+				"click span a":"clear"
+			},
+			initialize:function () {
+				this.listenTo(this.model,"change",this.render);
+				this.listenTo(this.model,"destroy",this.remove);
+			},
+			render:function () {
+				this.$el.html(this.tpl(this.model.toJSON()));	
+				return this;	
+			},
+			edit:function (e) {
+				$(e.currentTarget).removeClass('show').addClass('edit').find('input,select').focus();
+			},
+			close:function (e) {
+				var target =$(e.currentTarget);
+				var tmpData ={};
+				tmpData[targe.attr("name")]=target.val();
+				this.model.set(tmpData,{"validate":true});
+				$(e.currentTarget).parents("editing").removeClass('editing').addClass('show');
+			},
+			clear:function () {
+				this.model.destroy();
+			}
+		})
+
+		var AppView = Backbone.View.extend({
+			el:$("#stuManager"),
+			events:{
+				"click #btnAdd":"createOnEnter"
+			},
+			initialize:function () {
+				this.listenTo(Students,"add",this.addOne);
+				this.listenTo(Students,"reset",this.addAll);
+				Students.fetch();
+
+			},
+			createOnEnter:function () {
+				alert()
+				var tmpData={};
+				$("#Name,#Sex,#Score").each(function() {
+					tmpData[$(this).attr('name')]=$(this).val();
+					$(this).val("");
+				});
+				Students.create(tmpData);
+			},
+			addOne:function (stu) {
+
+				var view = new StudentView({model:stu});
+				this.$("#ulMessage").append(view.render().el);
+			}
+		}) 
+
+		var app = new AppView;
+	})
+	</script>
+</body>
+</html>

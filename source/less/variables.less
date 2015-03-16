@@ -1,0 +1,229 @@
+//颜色
+@gray-base:              		  #000;
+@gray-darker:            		  lighten(@gray-base, 13.5%); // #222
+@gray-dark:                       lighten(@gray-base, 20%);   // #333
+@gray:                            lighten(@gray-base, 33.5%); // #555
+@gray-light:                      lighten(@gray-base, 46.7%); // #777
+@gray-lighter:                    lighten(@gray-base, 93.5%); // #eee
+
+//基础颜色
+@base-primary:         			  #428bca;
+@base-success:        			  #5cb85c;
+@base-info:            			  #5bc0de;
+@base-warning:         			  #f0ad4e;
+@base-danger:          			  #d9534f;             
+
+//基础结构
+@body-bg:                          #fff;
+@text-color:                       @gray-dark;
+@link-color:                       @base-primary;
+@link-hover-color:                 darken(@link-color, 10%);
+@link-hover-decoration:            underline;
+
+//字体
+@font-family-base:                 ~'"Microsoft YaHei",\5fae\8f6f\96c5\9ed1,arial,\5b8b\4f53;';
+
+//字体大小
+@font-size-base:                   12px;
+@font-size-large:                  ceil((@font-size-base)*1.16);  //14px;
+@font-size-larger:                 ceil((@font-size-base)*1.13);  //16px;
+
+@line-height-base:                 1.666666667; // 20/12
+@line-height-computed:             floor((@font-size-base)*@line-height-base); //~20px;
+
+//元件设置
+@padding-base-vertical:            6px;
+@padding-base-horizontal:          12px;
+
+@padding-large-vertical:           10px;
+@padding-large-horizontal:         16px;
+
+@padding-small-vertical:           5px;
+@padding-small-horizontal:         10px;
+
+@padding-xs-vertical:              1px;
+@padding-xs-horizontal:            5px;
+
+@line-height-large:                1.8;
+@line-height-small:                1.5;
+
+@border-radius-base:               4px;
+@border-radius-large:              6px;
+@border-radius-small:              3px;
+
+@component-active-color:           #fff;
+@component-active-bg:              @base-primary;
+
+@caret-width-base:                 4px;
+@caret-width-large:                5px;
+
+//表格设置
+@table-cell-padding:               8px;
+@table-condensed-cell-padding:     5px;
+@table-bg:                         transparent;
+@table-bg-accent:                  #f9f9f9;
+@table-bg-hover:                   #f5f5f5;
+@table-bg-active:                  @table-bg-hover;
+@table-border-color:               #ddd;
+
+//按钮
+@btn-font-weight:                  normal;
+@btn-default-color:                #333;
+@btn-default-bg:                   #fff;
+@btn-default-border:               #ccc;
+
+@btn-primary-color:                #fff;
+@btn-primary-bg:                   @base-primary;
+@btn-primary-border:               darken(@btn-primary-bg, 5%);
+
+@btn-success-color:                #fff;
+@btn-success-bg:                   @base-success;
+@btn-success-border:               darken(@btn-success-bg, 5%);
+
+@btn-info-color:                   #fff;
+@btn-info-bg:                      @base-info;
+@btn-info-border:                  darken(@btn-info-bg, 5%);
+
+@btn-warning-color:                #fff;
+@btn-warning-bg:                   @base-warning;
+@btn-warning-border:               darken(@btn-warning-bg, 5%);
+
+@btn-danger-color:                 #fff;
+@btn-danger-bg:                    @base-danger;
+@btn-danger-border:                darken(@btn-danger-bg, 5%);
+
+@btn-link-disabled-color:          @gray-light;
+
+//表单
+@input-bg:                         #fff;
+@input-bg-disabled:                @gray-lighter;
+@input-color:                      @gray;
+@input-border:                     #ccc;
+
+@input-border-radius:              @border-radius-base;
+@input-border-radius-large:        @border-radius-large;
+@input-border-radius-small:        @border-radius-small;
+
+@input-border-focus:               #66afe9;
+@input-color-placeholder:          #999;
+
+@input-height-base:                (@line-height-computed + (@padding-base-vertical * 2) + 2);  //20+6*2+2 =34px;
+// @input-height-large:               (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+// @input-height-small:               (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+@form-group-margin-bottom:         5px;
+
+@input-group-addon-bg:             @gray-lighter;
+@input-group-addon-border-color:   @input-border;
+@cursor-disabled:                  not-allowed;
+//zIndex设定
+@zindex-navbar:                    1000;
+@zindex-dropdown:                  1000;
+@zindex-popover:                   1060;
+@zindex-tooltip:                   1070;
+@zindex-navbar-fixed:              1030;
+@zindex-modal:                     1040;
+
+//Media查询
+@screen-xs:                        480px;
+@screen-xs-min:                    @screen-xs;
+@screen-xs-phone:                  @screen-xs-min;
+
+@screen-sm:                        768px;
+@screen-sm-min:                    @screen-sm;
+@screen-tablet:                    @screen-sm-min;
+
+@screen-md:                        992px;
+@screen-md-min:                    @screen-md;
+@screen-desktop:                   @screen-md-min;
+
+@screen-lg:                        1200px;
+@screen-lg-min:                    @screen-lg;
+@screen-lg-desktop:                @screen-lg-min;
+
+@screen-xs-max:                    (@screen-sm-min - 1);
+@screen-sm-max:                    (@screen-md-min - 1);
+@screen-md-max:                    (@screen-lg-min - 1);
+
+//框架体系
+@grid-columns:                     12;
+@grid-gutter-width:                10px;
+@grid-float-breakpoint:            @screen-sm-min;
+@grid-float-breakpoint-max:        (@grid-float-breakpoint - 1);
+
+@container-tablet:                 (740px + @grid-gutter-width);
+@container-sm:                     @container-tablet;
+
+@container-desktop:                (960px + @grid-gutter-width);
+@container-md:                     @container-desktop;
+
+@container-large-desktop:          (1160px + @grid-gutter-width);
+@container-lg:                     @container-large-desktop;
+
+//下拉菜单
+@dropdown-bg:                      #fff;
+@dropdown-border-color:            rgba(0,0,0,0.15);
+@dropdown-fallback-border:         #ccc;
+@dropdown-divider-bg:              #e5e5e5;
+
+@dropdown-link-color:              @gray-dark;
+@dropdown-link-hover-color:        darken(@gray-dark,5%);
+@dropdown-link-hover-bg:           #f5f5f5;
+@dropdown-link-active-color:       @component-active-color;
+@dropdown-link-active-bg:          @component-active-bg;
+@dropdown-link-disabled-color:     @gray-light;
+
+//导航
+@nav-link-padding:                 10px 15px;
+@nav-link-hover-bg:                @gray-lighter;
+
+@nav-disabled-link-color:          @gray-light;
+@nav-disabled-link-hover-color:    @gray-light;
+
+@nav-tabs-border-color:                     #ddd;
+@nav-tabs-link-hover-border-color:          @gray-lighter;
+
+@nav-tabs-active-link-hover-bg:             @body-bg;
+@nav-tabs-active-link-hover-color:          @gray;
+@nav-tabs-active-link-hover-border-color:   #ddd;
+
+//导航条
+@navbar-height:                    50px;
+
+//面包屑
+@breadcrumb-padding-vertical:      8px;
+@breadcrumb-padding-horizontal:    15px;
+
+@breadcrumb-bg:                    #f5f5f5;
+@breadcrumb-color:                 #ccc;
+@breadcrumb-active-color:          @gray-light;
+@breadcrumb-separator:             "/";  
+
+//分页
+@pagination-color:                     @link-color;
+@pagination-bg:                        #fff;
+@pagination-border:                    #ddd;
+
+@pagination-hover-color:               @link-hover-color;
+@pagination-hover-bg:                  @gray-lighter;
+@pagination-hover-border:              #ddd;
+
+@pagination-active-color:              #fff;
+@pagination-active-bg:                 @base-primary;
+@pagination-active-border:             @base-primary;
+
+@pagination-disabled-color:            @gray-light;
+@pagination-disabled-bg:               #fff;
+@pagination-disabled-border:           #ddd;
+
+//徽记
+@badge-color:                 #fff;
+@badge-link-hover-color:      #fff;
+@badge-bg:                    @gray-light;
+
+@badge-active-color:          @link-color;
+@badge-active-bg:             #fff;
+
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;

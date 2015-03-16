@@ -1,0 +1,12 @@
+.table-row-variant(@state,@background){
+	.table > thead > tr,
+	.table > tbody > tr,
+	.table > tfoot > tr{
+		> td.@{state},
+		> th.@{state},
+		&.@{state} > td,
+		&.@{state} > th{
+			background-color: @background;
+		}
+	}
+}

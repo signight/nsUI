@@ -1,0 +1,181 @@
+//表单基础原件初始化
+label{
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+input[type="search"]{
+	.box-sizing(border-box);
+}
+input[type="radio"],
+input[type="checkbox"]{
+	margin:5px 0 0;
+	margin-top: 1px \9;
+	line-height: normal;
+}
+input[type="file"]{
+	display: block;
+}
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+//修复select高度问题
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+// Focus for file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus();
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"]{
+	line-height: @input-height-base;
+	line-height: @line-height-base ~"\0"; //for IE8-
+}
+
+input[type="search"]{
+	-webkit-appearance:none;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+	&[disabled],
+	&.disabled,
+	fieldset[disabled] & {
+		cursor: @cursor-disabled;
+	}
+}
+
+.radio,.checkbox{
+	position: relative;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	label{
+		min-height: @line-height-computed;
+		padding-left: 20px;
+		margin-bottom: 0;
+		font-weight: normal;
+		cursor: pointer;
+	}
+}
+
+.radio,
+.checkbox {
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: @cursor-disabled;
+    }
+  }
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"]{
+	position: absolute;
+	margin-left: -20px;
+	margin-top: 4px \9;
+}
+.radio + .radio,
+.checkbox + .checkbox{
+	margin-top: -5px;
+}
+
+.radio-inline,
+.checkbox-inline{
+	position: relative;
+	display: inline-block;
+	padding-left: 20px;
+	margin-bottom: 0;
+	vertical-align: middle;
+	font-weight: normal;
+	cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline{
+	margin-top: 0;
+	margin-left: 10px;
+}
+.form-group{
+	margin-bottom: @form-group-margin-bottom;
+}
+.form-control{
+	display: block;
+	width: 100%;
+	height: @input-height-base;
+	padding:@padding-base-vertical @padding-base-horizontal;
+	font-size: @font-size-base;
+	line-height: @line-height-base;
+	color: @input-color;
+	background-color: @input-bg;
+	background-image: none;
+	border: 1px solid @input-border;
+	//border-radius: @input-border-radius;
+	.box-shadow(inset 0 1px 1px rgba(0,0,0,0.075));
+	.transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+	.form-control-focus();
+	.placeholder();
+	&[disabled],
+	&[readonly],
+	fieldset[disabled] & {
+		cursor:@cursor-disabled;
+		background-color: @input-bg-disabled;
+		opacity: 1;
+	}
+	textarea& {
+		height: auto;
+	}
+}
+.form-control-static{
+	padding-top: (@padding-base-vertical + 1);
+	padding-bottom: (@padding-base-vertical + 1);
+	margin-bottom: 0;
+	min-height: (@line-height-computed + @font-size-base);
+}
+.form-horizontal{
+	.form-group{
+		.make-row();
+	}
+	@media (min-width:@screen-sm-min) {
+		.control-label{
+			text-align: right;
+			margin-bottom: 0;
+			padding-top: (@padding-base-vertical + 1);
+		}
+	}
+}
+.has-feedback{
+	position: relative;
+	.form-control{
+		padding-right: (@input-height-base * 1.25);
+	}
+	.form-control-feedback{
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+		display: block;
+		width: @input-height-base;
+		height: @input-height-base;
+		line-height: @input-height-base;
+		text-align: center;
+		pointer-events: none;
+	}
+}
+

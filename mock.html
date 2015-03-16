@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="source/js/lib/jquery.min.js"></script>
+	<script src="source/js/lib/underscore.js"></script>	
+	<script src="source/js/lib/mock-min.js"></script>
+	
+</head>
+<body>
+	<script type="text/template" id="list-temp">
+		<div>
+			<span><%=id %></span>
+			<span><%=email %></span>
+		</div>
+	</script>
+	<script>
+		Mock.mock(/\.json/, {
+			'list|1-10': [{
+				'id|+1': 1,
+				'email': '@EMAIL'
+			}]
+		})
+		$.ajax({
+			url: 'hello.json',
+			type: 'GET',
+			dataType: 'json'
+		})
+		.done(function(data) {
+			var tpl=_.template($("#list-temp").html());
+			_.each(data.list,function(data) {
+			    $("body").append(tpl(data));
+			});
+			//$("body").append(tpl(data.list));
+		})
+	</script>
+</body>
+</html>

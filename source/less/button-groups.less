@@ -1,0 +1,58 @@
+.btn-group,
+.btn-group-vertical{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	> .btn{
+		position: relative;
+		float: left;
+	}
+}
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -1px;
+  }
+}
+.btn-toolbar{
+	margin-left: -5px;
+	&:extend(.clearfix all);
+
+	.btn-group,
+	.input-group{
+		float: left;
+	}
+
+	>.btn,
+	>.btn-group,
+	>.input-group{
+		margin-left: 5px;
+	}
+}
+
+.btn-group-vertical{
+	>.btn,
+	>.btn-group,
+	>.btn-group > .btn{
+		display: block;
+		float: none;
+		width: 100%;
+	}
+
+	>.btn-group{
+		&:extend(.clearfix all);
+		>.btn{
+			float: none;
+		}
+	}
+
+	> .btn + .btn,
+  	> .btn + .btn-group,
+  	> .btn-group + .btn,
+  	> .btn-group + .btn-group {
+    	margin-top: -1px;
+   	 	margin-left: 0;
+  	}
+}
