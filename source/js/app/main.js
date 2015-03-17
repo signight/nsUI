@@ -1,13 +1,9 @@
 require.config({
-	baseUrl:"../source/js/lib/",
+	baseUrl:"../source/js/lib",
 	paths:{
 		"jquery":"jquery.min",
-		"underscore":"underscore",
-		"backbone":"backbone-min",
-		"Backbone.LocalSorage":"backbone.localStorage-min",
-		"mock":'mock-min',
-		"router":"../app/router"
-		
+		"ztree":"../vendor/jquery.ztree.core-3.5.min",
+		"indexInit":"../app/indexInit"
 	},
 	shim: {
 		"backbone": {
@@ -16,9 +12,11 @@ require.config({
 		},
 		'underscore' : {
 			exports : '_'
+		},
+		'ztree':{
+			deps:['jquery']
 		}
 	}
 });
-require(["router"],function () {
-
+require(["jquery","indexInit"],function () {
 })
