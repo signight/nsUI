@@ -18,5 +18,6 @@ require.config({
 		}
 	}
 });
-require(["jquery","indexInit"],function () {
+require(["jquery"],function () {
+	alert()
 })

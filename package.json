@@ -9,6 +9,7 @@
   "keywords": [
     "test"
   ],
+  "repository": "git@github.com:signight/nsUI.git",
   "author": "sunan zhang",
   "license": "ISC",
   "devDependencies": {
@@ -16,6 +17,11 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-less": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "underscore": "~1.8.2"
+  },
+  "dependencies": {
+    "express": "~4.12.3",
+    "path": "~0.11.14"
   }
 }
