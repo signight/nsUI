@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div#container hehe
+  h1= title
+  p Welcome to #{title}
+  p
+  | foo bar baz
+  | rawr rawr
+  | super cool
+  | go jade go
+  - var html = "<script></script>"
+  | !{html}
+  label Username:
+  input(name='user')
+  div#list
+  ul
+  li.first: a(href='#') foo
+  li: a(href='#') bar
+  li: input(type="checkbox",checked)
+  li.last: a(href='#') baz
