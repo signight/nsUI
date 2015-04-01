@@ -29,19 +29,11 @@
 
   // Round the first and last items
   &:first-child {
-    
+    .border-top-radius(@list-group-border-radius);
   }
   &:last-child {
     margin-bottom: 0;
-    
-  }
-
-  // Align badges within list items
-  > .badge {
-    float: right;
-  }
-  > .badge + .badge {
-    margin-right: 5px;
+    .border-bottom-radius(@list-group-border-radius);
   }
 }
 
