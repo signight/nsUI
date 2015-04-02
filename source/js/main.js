@@ -1,6 +1,11 @@
 require.config({
 	paths:{
-		"jquery":"lib/jquery.min"
+		"jquery":"lib/jquery.min",
+		"backbone":"lib/backbone-min",
+		"backbonelocalstorage":"lib/backbone.localStorage-min",
+		"underscore":"lib/underscore",
+		"text":"lib/text",
+		"mock":"lib/mock"
 	},
 	shim: {
 		"backbone": {
@@ -9,11 +14,8 @@ require.config({
 		},
 		'underscore' : {
 			exports : '_'
-		},
-		'ztree':{
-			deps:['jquery']
 		}
 	}
 });
-require(["jquery","views/index"],function () {
+require(["jquery"],function () {
 })
