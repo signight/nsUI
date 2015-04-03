@@ -1,21 +1,36 @@
+'use strict';
 require.config({
 	paths:{
-		"jquery":"lib/jquery.min",
-		"backbone":"lib/backbone-min",
-		"backbonelocalstorage":"lib/backbone.localStorage-min",
-		"underscore":"lib/underscore",
-		"text":"lib/text",
-		"mock":"lib/mock"
+		jquery: 'lib/jquery.min',
+		underscore: 'lib/underscore',
+		backbone: 'lib/backbone-min',
+		backboneLocalstorage: 'lib/backbone.localStorage-min',
+		text: 'lib/text'
 	},
 	shim: {
-		"backbone": {
-			deps: ["underscore"],
-			exports: "Backbone"
+		underscore: {
+			exports: '_'
 		},
-		'underscore' : {
-			exports : '_'
+		backbone: {
+			deps: [
+				'underscore',
+				'jquery'
+			],
+			exports: 'Backbone'
+		},
+		backboneLocalstorage: {
+			deps: ['backbone'],
+			exports: 'Store'
 		}
 	}
 });
-require(["jquery"],function () {
+require(["jquery","views/sidebar"],function ($,sidebarView) {
+	// var el =$("#sidebar"),
+	// 	tpl = tpl;
+	// var data ={
+	// 	list:[{"name": "结构1","url":"go.html"},{"name": "结构2","url":"index.html"},{"name": "结构3","url":"index.html"}]
+	// }
+	// var html=_.template(tpl,data);
+	// el.append(html)
+	new sidebarView();
 })
