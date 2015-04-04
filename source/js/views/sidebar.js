@@ -4,17 +4,31 @@ define([
 	'backbone',
 	'collections/sidebar',
 	'text!templates/sidebar.html'
-],function ($,_,Backbone,Sidebar,SidebarTpl) {
+],function ($,_,Backbone,SidebarCollection,sidebarTemplate){
 	var sidebarView = Backbone.View.extend({
-		tpl:_.template(SidebarTpl),
+		el:$("#sidebar"),
+		tpl:_.template(sidebarTemplate),
+		collection:SidebarCollection,
 		initialize:function () {
-			this.render();
+			this.listenTo(SidebarCollection,'reset',this.render);
+			SidebarCollection.fetch({
+				reset:true,
+				success:function (collection,resp) {
+					console.log("<------------(◕ω＜)☆/请求发送成功----------->");
+					for (var i = 0; i < collection.models.length; i++) {
+						console.log(collection.models[i].toJSON());
+					};
+					console.log("<------------(●˘◡˘●)请求发送结束----------->");
+				}
+			})
 		},
 		render:function () {
-			alert(JSON.stringify(Sidebar.fetch()));
-			this.$el.html(this.tpl(Sidebar));
+			var items = this.collection.models;
+			for (var i = 0; i < items.length; i++) {
+				this.$el.append(this.tpl(items[i].toJSON()));
+			};
 			return this;
 		}
 	})
-	return sidebarView;
+	return new sidebarView();;
 })
