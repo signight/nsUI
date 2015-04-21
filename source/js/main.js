@@ -5,7 +5,9 @@ require.config({
 		underscore: 'lib/underscore',
 		backbone: 'lib/backbone-min',
 		backboneLocalstorage: 'lib/backbone.localStorage-min',
-		text: 'lib/text'
+		text: 'lib/text',
+		ztree:'vendor/zTree/jquery.ztree.core-3.5',
+		mock:'lib/mock-min'
 	},
 	shim: {
 		underscore: {
@@ -24,5 +26,5 @@ require.config({
 		}
 	}
 });
-require(["jquery","views/sidebar"],function ($) {
+require(["jquery","views/sidebar",'dataTree'],function ($) {
 })
