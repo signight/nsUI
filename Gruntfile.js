@@ -64,7 +64,7 @@ module.exports=function (grunt) {
 					port:8080,
 					protocal:"http",  //默认为http协议，可选"http"或"https"
 					hostname:"*",	  //默认就是这个值，可配置为本机某个 IP，localhost 或域名
-					livereload:3399,  //声明给 watch 监听的端口，允许无刷新调试
+					livereload:35729,  //声明给 watch 监听的端口，允许无刷新调试
 					//directory:        //设置允许访问的路径。
 					//keepalive:false   //保持长连接，默认为false
 					base:{                        //默认为Gruntfile.js的同路径，可以定义为3种类型，1#字符串:"public"，设置根目录；2#数组:['public','www-root'],
@@ -72,33 +72,34 @@ module.exports=function (grunt) {
 						options:{
 							index:"index.html"
 						}
-					}          			
+					},
+					open:true            //默认为false，设置成true表示自动打开网页 http:// ,更多设置参考官方文档     			
 				}
 			}
 		},
 		watch:{
-			livereload: {
-                options: {
-                    livereload: '<%=connect.options.livereload%>'  //监听前面声明的端口  35729
-                },
+			// livereload: {
+   //              options: {
+   //                  livereload: '<%=connect.options.livereload%>'  //监听前面声明的端口  35729
+   //              },
  
-                files: [  //下面文件的改变就会实时刷新网页
-                    'app/*.html',
-                    'app/style/{,*/}*.css',
-                    'app/scripts/{,*/}*.js',
-                    'app/images/{,*/}*.{png,jpg}'
-                ]
-            },
+   //              files: [  //下面文件的改变就会实时刷新网页
+   //                  'app/*.html',
+   //                  'app/style/{,*/}*.css',
+   //                  'app/scripts/{,*/}*.js',
+   //                  'app/images/{,*/}*.{png,jpg}'
+   //              ]
+   //          },
 			less:{
 				files:'source/**/*.less',
 				tasks:'less'
 			}
 		}
 	});
-	require('load-grunt-tasks')(grunt);
-	grunt.registerTask('default',['less']);
+	require('load-grunt-tasks')(grunt);                               
+	grunt.registerTask('default',['less','connect:site1','watch']);
 	grunt.registerTask('copy',['copy:build']);
 	grunt.registerTask('yasuo', ['uglify']);
 	grunt.registerTask('cssyasuo',['cssmin:combine']);
-	grunt.registerTask('clean',['clean']);
+	grunt.registerTask('remove',['clean']);                        //不要把任务名和方法名重名，会报错的 比如：grunt.registerTask('clean',['clean']); 
 }
