@@ -58,7 +58,37 @@ module.exports=function (grunt) {
 				}
 			}
 		},
+		connect:{
+			site1:{
+				options:{
+					port:8080,
+					protocal:"http",  //默认为http协议，可选"http"或"https"
+					hostname:"*",	  //默认就是这个值，可配置为本机某个 IP，localhost 或域名
+					livereload:3399,  //声明给 watch 监听的端口，允许无刷新调试
+					//directory:        //设置允许访问的路径。
+					//keepalive:false   //保持长连接，默认为false
+					base:{                        //默认为Gruntfile.js的同路径，可以定义为3种类型，1#字符串:"public"，设置根目录；2#数组:['public','www-root'],
+						path:".",                 //设定允许访问的路径；3#对象类型:{ path: 'public', options: { maxAge: 1000*60*5 } },设置默认访问路径和生命时长。
+						options:{
+							index:"index.html"
+						}
+					}          			
+				}
+			}
+		},
 		watch:{
+			livereload: {
+                options: {
+                    livereload: '<%=connect.options.livereload%>'  //监听前面声明的端口  35729
+                },
+ 
+                files: [  //下面文件的改变就会实时刷新网页
+                    'app/*.html',
+                    'app/style/{,*/}*.css',
+                    'app/scripts/{,*/}*.js',
+                    'app/images/{,*/}*.{png,jpg}'
+                ]
+            },
 			less:{
 				files:'source/**/*.less',
 				tasks:'less'
