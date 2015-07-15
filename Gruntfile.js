@@ -1,6 +1,11 @@
 module.exports=function (grunt) {
 	grunt.initConfig({
 		pkg:grunt.file.readJSON('package.json'),
+		meta: {
+            basePath: '',
+            srcPath: 'source/sass/',
+            deployPath: 'build/css/'
+        },
 		//合并js
 		concat:{
 			options:{
@@ -51,6 +56,16 @@ module.exports=function (grunt) {
 		    	src: ["build/**/*"]
 		  }
 		},
+		sass:{
+			build:{
+				files:{
+					'<%= meta.deployPath %>main.css': '<%= meta.srcPath %>main.scss'
+				},
+				options: {
+                    sourcemap: 'auto'
+                }
+			}
+		},
 		less:{
 			build:{
 				files:{
@@ -64,7 +79,7 @@ module.exports=function (grunt) {
 					port:8080,
 					protocal:"http",  //默认为http协议，可选"http"或"https"
 					hostname:"*",	  //默认就是这个值，可配置为本机某个 IP，localhost 或域名
-					livereload:35729,  //声明给 watch 监听的端口，允许无刷新调试
+					//livereload:35729,  //声明给 watch 监听的端口，允许无刷新调试
 					//directory:        //设置允许访问的路径。
 					//keepalive:false   //保持长连接，默认为false
 					base:{                        //默认为Gruntfile.js的同路径，可以定义为3种类型，1#字符串:"public"，设置根目录；2#数组:['public','www-root'],
@@ -78,18 +93,10 @@ module.exports=function (grunt) {
 			}
 		},
 		watch:{
-			// livereload: {
-   //              options: {
-   //                  livereload: '<%=connect.options.livereload%>'  //监听前面声明的端口  35729
-   //              },
- 
-   //              files: [  //下面文件的改变就会实时刷新网页
-   //                  'app/*.html',
-   //                  'app/style/{,*/}*.css',
-   //                  'app/scripts/{,*/}*.js',
-   //                  'app/images/{,*/}*.{png,jpg}'
-   //              ]
-   //          },
+			sass:{
+				files:'source/sass/**/*.sass',
+				tasks:'sass'
+			},
 			less:{
 				files:'source/**/*.less',
 				tasks:'less'
@@ -98,6 +105,7 @@ module.exports=function (grunt) {
 	});
 	require('load-grunt-tasks')(grunt);                               
 	grunt.registerTask('default',['less','connect:site1','watch']);
+	grunt.registerTask('watchSass',['watch:sass']);
 	grunt.registerTask('copy',['copy:build']);
 	grunt.registerTask('yasuo', ['uglify']);
 	grunt.registerTask('cssyasuo',['cssmin:combine']);

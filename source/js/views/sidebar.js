@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'collections/sidebar',
-	'text!templates/sidebar.html'
+	'text!templates/sidebar.html','router/router'
 ],function ($,_,Backbone,SidebarCollection,sidebarTemplate){
 	var sidebarView = Backbone.View.extend({
 		el:$("#sidebar"),
@@ -23,11 +23,14 @@ define([
 			})
 		},
 		render:function () {
-			var items = this.collection.models;
-			for (var i = 0; i < items.length; i++) {
-				this.$el.append(this.tpl(items[i].toJSON()));
-			};
+			this.append()
 			return this;
+		},
+		append:function () {
+			var that = this;
+			this.collection.forEach(function (model) {
+				that.$el.append(that.tpl(model.toJSON()));
+			})
 		}
 	})
 	return new sidebarView();;
