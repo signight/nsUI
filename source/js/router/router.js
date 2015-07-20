@@ -8,7 +8,7 @@ define([
             "*jump":"showAbout"
         },
         showAbout:function (param) {
-            alert(param)
+            //alert(param)
         }
     })
 

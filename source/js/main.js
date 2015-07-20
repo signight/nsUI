@@ -26,5 +26,5 @@ require.config({
 		}
 	}
 });
-require(["jquery","views/sidebar",'dataTree'],function ($) {
+require(["jquery","views/app",'dataTree'],function ($) {
 })
