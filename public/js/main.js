@@ -26,5 +26,6 @@ require.config({
 		}
 	}
 });
-require(["jquery","views/app",'dataTree'],function ($) {
+require(["jquery","views/app",'routers/router'],function ($) {
+	Backbone.history.start();
 })

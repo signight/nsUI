@@ -6,7 +6,7 @@ define([
     'views/sidebar'
 ],function ($,_,Backbone,SidebarCollection,SideBarItemView){
     var sidebarView = Backbone.View.extend({
-        el:$("#sidebar"),
+        el:$("#content"),
         initialize:function () {
             this.listenTo(SidebarCollection,'reset',this.render);
             SidebarCollection.fetch({
@@ -28,7 +28,7 @@ define([
         },
         append:function (item) {
             var sideBarItemView = new SideBarItemView({model:item});
-            this.$el.append(sideBarItemView.render().el);
+            this.$("#sidebar").append(sideBarItemView.render().el);
         }
     })
     return new sidebarView();

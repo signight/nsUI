@@ -32,20 +32,22 @@ module.exports=function (grunt) {
 		},
 		//合并压缩CSS
 		cssmin:{
-			combine:{
-				files:{
-					'dist/x.css':'build/*.css'
-				}
+			options:{
+				banner: '/* 压缩后的扩展样式表 */'
 			},
-			minify:{
-				expand:true,
-				cwd:'css/',
-				src:['*.css','!*.min.css'],
-				dest:'css/',
-				ext:'.min.css'
-			}
+			minify: {
+			    expand: true,        // 启用下面的选项
+			    cwd: 'build/css/',    // 指定待压缩的文件路径
+			    src: ['*.css', '!*.min.css'],    // 匹配相对于cwd目录下的所有css文件(排除.min.css文件)
+			    dest: 'public/css/',    // 生成的压缩文件存放的路径
+			    ext: '.min.css'        // 生成的文件都使用.min.css替换原有扩展名，生成文件存放于dest指定的目录中
+		  	}
 		},
 		copy: {
+			dev:{
+				src:'build/*',
+				dest:'public/'
+			},
 	      	build: {
 		        src: 'source/*',
     			dest: 'build/',
@@ -67,6 +69,11 @@ module.exports=function (grunt) {
 			}
 		},
 		less:{
+			dev:{
+				files:{
+					"public/css/main.css":"source/less/main.less"
+				}
+			},
 			build:{
 				files:{
 					"build/css/main.css":"source/less/main.less"
@@ -99,15 +106,16 @@ module.exports=function (grunt) {
 			},
 			less:{
 				files:'source/**/*.less',
-				tasks:'less'
+				tasks:'less:dev'
 			}
 		}
 	});
 	require('load-grunt-tasks')(grunt);                               
 	grunt.registerTask('default',['less','connect:site1','watch']);
 	grunt.registerTask('watchSass',['watch:sass']);
+	grunt.registerTask('dev',['watch:less']);
 	grunt.registerTask('copy',['copy:build']);
 	grunt.registerTask('yasuo', ['uglify']);
-	grunt.registerTask('cssyasuo',['cssmin:combine']);
+	grunt.registerTask('cssgo',['less','cssmin']);
 	grunt.registerTask('remove',['clean']);                        //不要把任务名和方法名重名，会报错的 比如：grunt.registerTask('clean',['clean']); 
 }
