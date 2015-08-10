@@ -32,7 +32,6 @@ require.config({
 		}
 	}
 });
-require(["jquery","test","highlight","views/app",'routers/router'],function ($,test) {
-	 test();
+require(["jquery","highlight","views/app",'routers/router'],function ($) {
 	 prettyPrint();
 })
