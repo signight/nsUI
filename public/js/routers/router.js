@@ -12,11 +12,11 @@ define([
     })
     var myTodoRouter = new TodoRouter();
     myTodoRouter.on('route:defaultRoute', function (actions) {
-        //var defaultHref = $("#sidebar li:first a").attr('href');
-        var actions = actions ? actions : "grid.html";
+        var actions = actions ? actions : "default.html";
         $("#contentBody").load('temp/'+actions);
     });
     myTodoRouter.on('route:loadView', function (action) {
         $("#contentBody").load('temp/'+action);
     });
+    Backbone.history.start();
 })

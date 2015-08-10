@@ -2,7 +2,41 @@
 	<style>
 	.doc-grid div[class*="col-"]{background-color: #428bca;padding:10px;box-shadow: inset 0 0 1px rgba(0,0,0,0.3);margin-bottom: 10px;color: #fff;text-align: center;}
 	</style>
-	<div class="container-fluid doc-grid">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>栅格系统</h2>
+			<hr>
+<p>框架提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。</p>
+<h3>栅格系统的设计原理及应用</h3>
+<hr>
+<p>在网页设计中，我们把宽度为“W”的页面分割成n个网格单元“a”，每个单元与单元之间的间隙设为“i”,此时我们把“a+i”定义“A”。他们之间的关系如下：</p>
+<p>栅格系统用于通过一系列的行（row）与列（col）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中。</p>
+<ul>
+	<li>
+		<p>“行（row）”必须包含在 .container （固定宽度）或 .container-fluid （100% 宽度）中</p>
+	</li>
+	<li>
+		<p>通过“行（row）”在水平方向创建一组“列（col）”。</p>
+	</li>
+	<li>
+		<p>你的内容应当放置于“列（col）”内，并且，只有“列（col）”可以作为行（row）”的直接子元素。</p>
+	</li>
+	<li>
+		<p>类似 .row 和 .col-xs-4 这种预定义的类，可以用来快速创建栅格布局。Bootstrap 源码中定义的 mixin 也可以用来创建语义化的布局。</p>
+	</li>
+	<li>
+		<p>通过为“列（col）”设置 padding 属性，从而创建列与列之间的间隔（gutter）。通过为 .row 元素设置负值 margin 从而抵消掉为 .container 元素设置的 padding，也就间接为“行（row）”所包含的“列（col）”抵消掉了padding。</p>
+	</li>
+	<li>
+		<p>栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个 .col-xs-4 来创建。</p>
+	</li>
+	<li>
+		<p>如果一“行（row）”中包含了的“列（column）”大于 12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列。</p>
+	</li>
+</ul>
+		</div>
+	</div>
+	<div class="doc-grid">
 		<div class="row">
 			<div class="col-md-1">col-md-1</div>
 			<div class="col-md-1">col-md-1</div>
@@ -34,4 +68,34 @@
 		<div class="row">
 			<div class="col-md-12">col-md-12</div>
 		</div>
+	</div>
+	<h3>列偏移</h3>
+	<div class="doc-grid">
+		<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+</div>
+	</div>
+	<h3>列嵌套</h3>
+	<div class="doc-grid">
+		<div class="row">
+  <div class="col-sm-9">
+    Level 1: .col-sm-9
+    <div class="row">
+      <div class="col-xs-8 col-sm-6">
+        Level 2: .col-xs-8 .col-sm-6
+      </div>
+      <div class="col-xs-4 col-sm-6">
+        Level 2: .col-xs-4 .col-sm-6
+      </div>
+    </div>
+  </div>
+</div>
 	</div>

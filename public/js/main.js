@@ -7,7 +7,9 @@ require.config({
 		backboneLocalstorage: 'lib/backbone.localStorage-min',
 		text: 'lib/text',
 		ztree:'vendor/zTree/jquery.ztree.core-3.5',
-		mock:'lib/mock-min'
+		highlight:'vendor/prettify',
+		mock:'lib/mock-min',
+		doc:'vendor/docs.min'
 	},
 	shim: {
 		underscore: {
@@ -20,12 +22,17 @@ require.config({
 			],
 			exports: 'Backbone'
 		},
+		highlight:{
+			deps:['jquery'],
+			exports:'highlight'
+		},
 		backboneLocalstorage: {
 			deps: ['backbone'],
 			exports: 'Store'
 		}
 	}
 });
-require(["jquery","views/app",'routers/router'],function ($) {
-	Backbone.history.start();
+require(["jquery","test","highlight","views/app",'routers/router'],function ($,test) {
+	 test();
+	 prettyPrint();
 })
