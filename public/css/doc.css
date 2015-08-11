@@ -1399,7 +1399,7 @@ a.bg-danger:focus {
 }
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
+  margin: 10px 0 20px;
   border-bottom: 1px solid #eeeeee;
 }
 ul,
@@ -6950,7 +6950,7 @@ h1.info-class {
   }
 }
 section {
-  margin-top: 40px;
+  margin-top: 0px;
 }
 #social-buttons {
   padding: 22px 0 17px;
