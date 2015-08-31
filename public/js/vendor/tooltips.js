@@ -1,4 +1,4 @@
---+function ($) {
++function ($) {
 	'use strict';
 
 	var Tooltip = function (element,options) {
