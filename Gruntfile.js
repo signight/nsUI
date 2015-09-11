@@ -116,6 +116,6 @@ module.exports=function (grunt) {
 	grunt.registerTask('dev',['watch:less']);
 	grunt.registerTask('copy',['copy:build']);
 	grunt.registerTask('yasuo', ['uglify']);
-	grunt.registerTask('cssgo',['less','cssmin']);
+	grunt.registerTask('cssgo',['sass','cssmin']);
 	grunt.registerTask('remove',['clean']);                        //不要把任务名和方法名重名，会报错的 比如：grunt.registerTask('clean',['clean']); 
 }
