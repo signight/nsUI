@@ -315,41 +315,41 @@ input[type="checkbox"] {
 // }
 
 
-// .has-feedback {
-//   // Enable absolute positioning
-//   position: relative;
-//
-//   // Ensure icons don't overlap text
-//   .form-control {
-//     padding-right: ($input-height * 1.25);
-//   }
-// }
-// // Feedback icon
-// .form-control-feedback {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   z-index: 2; // Ensure icon is above input groups
-//   display: block;
-//   width: $input-height;
-//   height: $input-height;
-//   line-height: $input-height;
-//   text-align: center;
-//   pointer-events: none;
-// }
-// .input-lg + .form-control-feedback,
-// .input-group-lg + .form-control-feedback {
-//   width: $input-height-lg;
-//   height: $input-height-lg;
-//   line-height: $input-height-lg;
-// }
-// .input-sm + .form-control-feedback,
-// .input-group-sm + .form-control-feedback {
-//   width: $input-height-sm;
-//   height: $input-height-sm;
-//   line-height: $input-height-sm;
-// }
-//
+.has-feedback {
+  // Enable absolute positioning
+  position: relative;
+
+  // Ensure icons don't overlap text
+  .form-control {
+    padding-right: ($input-height * 1.25);
+  }
+}
+// Feedback icon
+.form-control-feedback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2; // Ensure icon is above input groups
+  display: block;
+  width: $input-height;
+  height: $input-height;
+  line-height: $input-height;
+  text-align: center;
+  pointer-events: none;
+}
+.input-lg + .form-control-feedback,
+.input-group-lg + .form-control-feedback {
+  width: $input-height-lg;
+  height: $input-height-lg;
+  line-height: $input-height-lg;
+}
+.input-sm + .form-control-feedback,
+.input-group-sm + .form-control-feedback {
+  width: $input-height-sm;
+  height: $input-height-sm;
+  line-height: $input-height-sm;
+}
+
 // // Form validation states
 // .has-success {
 //   @include form-control-validation($state-success-text, $state-success-text, $state-success-bg);

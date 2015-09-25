@@ -9,10 +9,10 @@
 		<p>为输入框设置 disabled 属性可以禁止其与用户有任何交互（焦点、输入等）。被禁用的输入框颜色更浅，并且还添加了 not-allowed 鼠标状态。</p>
 		<form>
 			<legend>表单表头</legend>
-			<div class="form-group">
+			<fieldset class="form-group">
 				<label for="form1">表单1</label>
 				<input type="text" class="form-control" id="form1" placeholder="form">
-			</div>
+			</fieldset>
 			<div class="form-group">
 				<label for="form2">表单2</label>
 				<input type="password" class="form-control" id="form2" placeholder="Password" disabled>
@@ -48,23 +48,24 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
-		<h2>水平表单</h2>
-		<form class="form-horizontal">
-			<div class="form-group">
-			<label for="formhor1" class="col-sm-2 control-label">水平表单1</label>
+	<div class="col-md-10">
+		<h2>网格表单</h2>
+		<p>要想使用更多结构化表单布局，你可以给表单组添加<code>.row</code>类，使用<code>.col-*</code>类给你的label和控件指定宽度。为了让label与文本输入框（带了<code>.form-control</code>类的控件）垂直居中对齐，label需要用<code>.form-control-label</code>类。</p>
+		<form>
+			<fieldset class="form-group row">
+				<label for="formhor1" class="col-sm-2 form-control-label">水平表单1</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="formhor1" placeholder="水平表单1">
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="formhor2" class="col-sm-2 control-label">水平表单2</label>
+			</fieldset> 
+			<div class="form-group row">
+				<label for="formhor2" class="col-sm-2 form-control-label">水平表单2</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" id="formhor2" placeholder="密码">
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="formhor3" class="col-sm-2 control-label">下拉菜单</label>
+			<div class="form-group row">
+				<label for="formhor3" class="col-sm-2 form-control-label">下拉菜单</label>
 				<div class="col-sm-10">
 					<select name="" id="" class="form-control">
 						<option value="opt1">opt1</option>
@@ -73,7 +74,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
 					<div class="checkbox">
 						<label>
@@ -82,7 +83,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">提交</button>
 				</div>
@@ -148,13 +149,13 @@
 		<p>如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 p 元素添加 .form-control-static 类即可。</p>
 		<form class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">纯文字</label>
+				<label class="col-sm-2 form-control-label">纯文字</label>
 				<div class="col-sm-10">
 					<p class="form-control-static">纯文字</p>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="col-sm-2 control-label">密码</label>
+				<label for="inputPassword" class="col-sm-2 form-control-label">密码</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" id="inputPassword" placeholder="密码">
 				</div>
@@ -163,27 +164,29 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-9">
 		<h2>添加图标</h2>
 		<p>为水平排列的表单和内联表单设置可选的图标</p>
-		<form class="form-horizontal">
-			<div class="form-group has-feedback">
-				<label class="control-label col-sm-2" for="inputSuccess3">表单1</label>
+		<form>
+			<div class="form-group row ">
+				<label class="form-control-label col-sm-2" for="inputSuccess3">表单1</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
-					<span class="fa fa-check form-control-feedback" aria-hidden="true"></span>
-					<span id="inputSuccess3Status" class="sr-only">(success)</span>
+					<div class="input-group has-feedback">
+						<input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+						<span class="fa fa-check form-control-feedback" aria-hidden="true"></span>
+						<span id="inputSuccess3Status" class="sr-only">(success)</span>
+					</div>
 				</div>
 			</div>
-			<div class="form-group has-feedback">
-				<label class="control-label col-sm-2" for="inputGroupSuccess2">表单2</label>
+			<div class="form-group row ">
+				<label class="form-control-label col-sm-2" for="inputGroupSuccess2">表单2</label>
 				<div class="col-sm-10">
-					<div class="input-group">
+					<div class="input-group has-feedback">
 						<span class="input-group-addon">@</span>
 						<input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+						<span class="fa fa-check form-control-feedback" aria-hidden="true"></span>
+						<span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
 					</div>
-					<span class="fa fa-check form-control-feedback" aria-hidden="true"></span>
-					<span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
 				</div>
 			</div>
 		</form>
@@ -204,16 +207,22 @@
 				<span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
 			</div>
 		</form>
-		<form class="form-inline">
-			<div class="form-group has-feedback">
-				<label class="control-label" for="inputGroupSuccess3">表单2</label>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-9">
+		<h2>添加按钮&单复选按钮</h2>
+		<p>复选框或单选钮选项放在一个输入框组的addon中，替换掉文本</p>
+		<form action="">
+			<fieldset class="form-group row">
+				<label class="form-control-label col-sm-2" for="inputGroupSuccess2">表单2</label>
 				<div class="input-group">
-					<span class="input-group-addon">@</span>
+					<span class="input-group-addon">
+						<input type="checkbox" aria-label="Checkbox for following text input">
+					</span>
 					<input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
 				</div>
-				<span class="fa fa-check form-control-feedback" aria-hidden="true"></span>
-				<span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
-			</div>
+			</fieldset>
 		</form>
 	</div>
 </div>
