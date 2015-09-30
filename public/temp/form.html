@@ -171,7 +171,7 @@
 			<div class="form-group row ">
 				<label class="form-control-label col-sm-2" for="inputSuccess3">表单1</label>
 				<div class="col-sm-10">
-					<div class="input-group has-feedback">
+					<div class="has-feedback">
 						<input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
 						<span class="fa fa-check form-control-feedback" aria-hidden="true"></span>
 						<span id="inputSuccess3Status" class="sr-only">(success)</span>
@@ -216,11 +216,13 @@
 		<form action="">
 			<fieldset class="form-group row">
 				<label class="form-control-label col-sm-2" for="inputGroupSuccess2">表单2</label>
-				<div class="input-group">
-					<span class="input-group-addon">
-						<input type="checkbox" aria-label="Checkbox for following text input">
-					</span>
-					<input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
+				<div class="col-sm-10">
+					<div class="input-group">
+			          <span class="input-group-addon">
+			            <input type="checkbox" aria-label="Checkbox for following text input">
+			          </span>
+			          <input type="text" class="form-control" aria-label="Text input with checkbox">
+			        </div>
 				</div>
 			</fieldset>
 		</form>

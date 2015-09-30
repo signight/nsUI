@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>按钮</h2>
-        <p>为 <code>&lt;a&gt;</code>、<code>&lt;button&gt;</code> 或 <code>&lt;input&gt;</code> 元素添加按钮类（button class）即可使用 Bootstrap 提供的样式。</p>
+        <p>为 <code>&lt;a&gt;</code>、<code>&lt;button&gt;</code> 或 <code>&lt;input&gt;</code> 元素添加按钮类（button class。</p>
         <div>
             <a class="btn btn-default" href="#" role="button">Link</a>
             <button class="btn btn-default" type="submit">Button</button>
@@ -31,6 +31,20 @@
             <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
             <button type="button" class="btn btn-link">（链接）Link</button>
         </div>
+        <h2>描边按钮</h2>
+        <p>需要一个按钮，但是不要他们自带的背景颜色？请用 <code>.btn-*-outline</code> 代替默认的修饰类，移除这些按钮上面的所有的背景底图和底色。</p>
+        <div>
+            <button type="button" class="btn btn-primary-outline">Primary</button>
+            <button type="button" class="btn btn-secondary-outline">Secondary</button>
+            <button type="button" class="btn btn-success-outline">Success</button>
+            <button type="button" class="btn btn-warning-outline">Warning</button>
+            <button type="button" class="btn btn-danger-outline">Danger</button>
+        </div>
+        <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary-outline"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary-outline"</span><span class="nt">&gt;</span>Secondary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-success-outline"</span><span class="nt">&gt;</span>Success<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-warning-outline"</span><span class="nt">&gt;</span>Warning<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-danger-outline"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span></code></pre></div>
         <h2>按钮尺寸</h2>
         <div>
             <p>
@@ -56,5 +70,49 @@
             <button type="button" class="btn btn-primary btn-lg btn-block">（块级元素）Block level button</button>
             <button type="button" class="btn btn-default btn-lg btn-block">（块级元素）Block level button</button>
         </div>
+        <h2>添加图标</h2>
+        <p>通过给按钮添加 <code>&lt;i&gt;</code>标签</p>
+        <div>
+            <!-- Standard button -->
+            <button type="button" class="btn btn-default"><i class="fa fa-cog fa-spin"></i>（默认样式）Default</button>
+
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-primary"><i class="fa fa-cog "></i>（首选项）Primary</button>
+        </div>
+        <h2>禁用状态</h2>
+        <div>
+            <button type="button" class="btn btn-primary" disabled>（首选项）Primary</button>
+        </div>
+        <h2>按钮组</h2>
+        <p>用<code>.btn-group</code>把一系列带有<code>.btn</code>的按钮包裹起来。</p>
+        <div>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary">Left</button>
+              <button type="button" class="btn btn-secondary">Middle</button>
+              <button type="button" class="btn btn-secondary">Right</button>
+            </div>
+        </div>
+        <h2>按钮工具栏</h2>
+        <p>将一系列按钮组组合成工具栏以实现更复杂的组件。</p>
+        <div class="bd-example" data-example-id="">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group" role="group" aria-label="First group">
+            <button type="button" class="btn btn-secondary">1</button>
+            <button type="button" class="btn btn-secondary">2</button>
+            <button type="button" class="btn btn-secondary">3</button>
+            <button type="button" class="btn btn-secondary">4</button>
+          </div>
+          <div class="btn-group" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-secondary">5</button>
+            <button type="button" class="btn btn-secondary">6</button>
+            <button type="button" class="btn btn-secondary">7</button>
+          </div>
+          <div class="btn-group" role="group" aria-label="Third group">
+            <button type="button" class="btn btn-secondary">8</button>
+          </div>
+        </div>
+        </div>
+        <h2>按钮组尺寸</h2>
+        <p>不需要对组中的每个按钮应用按钮尺寸类，只需要对每个<code>.btn-group</code>添加<code>.btn-group-*</code>类。如果嵌套了多个组，里面每个按钮都会自动获得大小。</p>
     </div>
 </div>
