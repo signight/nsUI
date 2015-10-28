@@ -9,7 +9,8 @@ require.config({
 		ztree:'vendor/zTree/jquery.ztree.core-3.5',
 		highlight:'vendor/prettify',
 		mock:'lib/mock-min',
-		doc:'vendor/docs.min'
+		doc:'vendor/docs.min',
+		pace:'vendor/pace.min'
 	},
 	shim: {
 		underscore: {
@@ -32,6 +33,6 @@ require.config({
 		}
 	}
 });
-require(["jquery","highlight","views/app",'routers/router'],function ($) {
+require(["jquery","highlight","pace","views/app",'routers/router'],function ($) {
 	 prettyPrint();
 })

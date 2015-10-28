@@ -151,7 +151,7 @@
     display: block;
     float: none;
     width: 100%;
-    max-width: 100%;
+    max-width: 100%;  
   }
 
   // Clear floats so dropdown menus can be properly placed
@@ -174,14 +174,14 @@
 
 .btn-group-vertical > .btn {
   &:not(:first-child):not(:last-child) {
-    border-radius: 0;
+    border-radius: 0;     
   }
   &:first-child:not(:last-child) {
-    border-top-right-radius: $btn-border-radius;
+    border-top-right-radius: 0;
     @include border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
-    border-bottom-left-radius: $btn-border-radius;
+    border-bottom-left-radius: 0; 
     @include border-top-radius(0);
   }
 }
